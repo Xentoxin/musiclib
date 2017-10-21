@@ -1,0 +1,14 @@
+nes (12 sloc)  251 Bytes
+all: A.o linky.o linkylibrary.o
+	gcc A.o linky.o linkylibrary.o -o links
+
+A.o: A.c linky.h linklibrary.h
+	gcc -c A.c
+linky.o: linky.c linky.h
+	gcc -c tunez.c
+linkylibrary.o: linkylibrary.c linkylibrary.h linky.h
+	gcc -c linkylibrary.c
+run: all
+	./links
+clean:
+	rm *.o
